@@ -24,7 +24,6 @@ def create_app(config_class=Config):
     bootstrap.init_app(app)
     app.elasticsearch = Elasticsearch([app.config['ELASTICSEARCH_URL']]) \
         if app.config['ELASTICSEARCH_URL'] else None
-    #app.nboost =
 
 
     from app.errors import bp as errors_bp
