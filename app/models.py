@@ -45,17 +45,16 @@ db.event.listen(db.session, 'before_commit', SearchableMixin.before_commit)
 db.event.listen(db.session, 'after_commit', SearchableMixin.after_commit)
 
 
-engine = create_engine('postgresql://postgres:cfh126@localhost/testkikirpa', convert_unicode=True, echo=False)
+engine = create_engine('postgresql://[username]:[password]@localhost/[path]', convert_unicode=True, echo=False)
 Base = declarative_base()
 metadata = Base.metadata
 
 
 class Artobject(SearchableMixin, db.Model, Base):
-    __tablename__ = 'artobjects'
-    __table_args__ = {'schema': 'testkikirpa'}
-    __searchable__ = ['id', 'passage']
-    passage = ['title', 'material', 'type', 'artist', 'location']
+    __tablename__ = '[nameOfTable in postgresql database]'
+    __searchable__ = ['title', 'material', 'type', 'artist', 'location']
 
+    #columns in table 
     id = Column(Integer, primary_key=True)
     title = Column(String)
     material = Column(String)
